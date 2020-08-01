@@ -1,0 +1,268 @@
+
+body {
+  width: 100%;
+  height: auto;
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+}
+.lead.emoji-picker-container {
+  resize: both;
+  overflow: auto;
+}
+
+button {
+  background: white;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  cursor: pointer;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-evenly;
+  /* margin: 1em; */
+  border-bottom: black solid 1px;
+  /* padding-bottom: 1em; */
+  width: 100%;
+  /* position: fixed; */
+  /* background: whitesmoke; */
+  z-index: 99;
+}
+
+#controls > div {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#capture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+canvas {
+  /* margin-top: 12vh; */
+  padding: 0;
+  height: 100%; 
+  width: auto; 
+  /* display: relative; */
+  /* border: 1px solid black; */
+  /* background-color: rgb(248, 248, 248); */
+}
+
+label {
+  cursor: pointer;
+  /* Style as you please, it will become the visible UI component. */
+}
+
+#file {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+  cursor: pointer;
+}
+
+div[id^="resizable"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20em;
+  width: 30em;
+  cursor: pointer;
+  overflow: hidden;
+  /* background: red; */
+  padding: 1em;
+  background: whitesmoke;
+  z-index: 97;
+  position: absolute;
+  overflow: hidden;
+  align-self: start;
+}
+
+input[id^="vidinput"]  {
+  /* background: red; */
+  width: 200px;
+  height: 30px;
+  position: absolute;
+  overflow: hidden;
+}
+
+
+iframe {
+  /* background: black; */
+  /* padding: 10px; */
+  /* resize: both; */
+  overflow: hidden;
+  cursor: pointer;
+  /* background: blue; */
+  height: 100%;
+  width: 100%;
+  /* background: lightgrey; */
+}
+
+
+
+
+
+.hide {
+  display: none;
+}
+
+a {
+  z-index: 98;
+  /* position: absolute; */
+}
+
+video {
+  position: absolute;
+  /* overflow: hidden; */
+}
+
+pre {
+  /* background: black; */
+/* padding: 10px; */
+/* resize: both; */
+
+cursor: pointer;
+position: absolute;
+height: 100%;
+width: 100%;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+.tools { 
+  display: none;
+}
+
+#tools {
+  /* position: absolute; */
+  cursor: pointer;
+  /* background: whitesmoke; */
+  /* z-index: 99; */
+  height: 10vh;
+}
+
+#drawing-mode-options {
+  display: column;
+  flex-direction: row;
+  padding: 1em;
+  background-color: whitesmoke;
+  height: 210px;
+}
+
+#drawing-mode {
+  display: hide;
+}
+
+#img {
+  width: 50px;
+}
+
+.emoji-picker-container {
+  /* background-color: whitesmoke; */
+  cursor: pointer;
+  position: absolute;
+  display: none;
+  /* width: 100px; */
+}
+
+.emoji-wysiwyg-editor {
+  /* line-height: 0px; */
+  overflow: hidden;
+  margin-bottom: 0;
+  padding: 0px;
+  padding-right: 0px;
+  word-wrap: break-word;
+  border: none;
+  background-color: none;
+}
+
+.emoji-picker-icon {
+  top: -.25em;
+  font-size: 50px;
+  right: -1em;
+}
+
+#controls > div.shapes > div > div.emoji-menu {
+  width: 380px;
+  /* opacity: 50%; */
+}
+
+button:focus { outline-style: none; }
+
+#drawing-line-width,
+ #drawing-shadow-width,
+ #drawing-shadow-offset
+ {
+  -webkit-appearance: none;
+  width: 45%;
+  height: 10px;
+  border-radius: 5px;
+  background: rgb(228,228,228);
+  background: linear-gradient(90deg, rgba(228,228,228,1) 0%, rgba(175,175,175,1) 100%);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  margin-left: 30px;
+}
+
+#drawing-line-width:hover,
+#drawing-shadow-width:hover,
+#drawing-shadow-offset:hover
+ {
+  opacity: 1;
+}
+
+#drawing-line-width::-webkit-slider-thumb, 
+#drawing-shadow-width::-webkit-slider-thumb, 
+#drawing-shadow-offset::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background: url('contrast.svg');
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+#drawing-line-width::-moz-range-thumb,
+#drawing-shadow-width::-moz-range-thumb,
+#drawing-shadow-offset::-moz-range-thumb
+ {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  
+  background: url('contrast.svg');
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+#outfitChange {
+  position: absolute;
+  right: 40px;
+}
+
+#light {
+  display: none;
+}
+
+#question {
+  right: 10px;
+  position: absolute;
+}
+
+#info1,
+#info2,
+#info3 {
+  /* display: block; */
+  position: absolute;
+}
