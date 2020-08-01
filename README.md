@@ -1,4 +1,4 @@
-# TeachIt
+# uTeach
 
 This is an updated graphic tool created using Fabric.js that allows teachers to teach over video using a whiteboard-style web app.
 
