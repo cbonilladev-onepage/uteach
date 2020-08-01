@@ -86,6 +86,7 @@ function clearCanvas() {
   canvas.clear()
 }
 function addDraw() {
+
   canvas.isDrawingMode = !canvas.isDrawingMode;
 
   if (canvas.isDrawingMode) {
@@ -312,7 +313,12 @@ function addDraw() {
     });
   }
 }
-
+$("#draw-toggle").on("click", function() {
+  $(this).toggleClass("toggle")
+})
+$("#emoji-toggle").on("click", function() {
+  $(this).toggleClass("toggle2")
+})
 function addPaper() {
   var rect = new fabric.Rect({
     left: 50,

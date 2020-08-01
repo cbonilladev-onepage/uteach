@@ -270,3 +270,12 @@ button:focus { outline-style: none; }
   /* display: block; */
   position: absolute;
 }
+
+.toggle {
+  background-color: lightgray;
+  padding: .28em;
+}
+.toggle2 {
+  background-color: lightgray;
+  padding: .2em .3em .2em .3em;
+}
