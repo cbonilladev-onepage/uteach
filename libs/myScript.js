@@ -685,7 +685,7 @@ document.onkeydown = function (e) {
         redo()
       }
       break;
-      
+
     case 70: // down
       console.log("hello")
       toFront()
@@ -720,40 +720,33 @@ function downloadSVGCanvas() {
 
 
 
-
+var rect = new fabric.Rect();
 $(document).on("click", '#light', function (event) {
+
   function light() {
-    var canvasw = (canvas.width)
-    var canvash = (canvas.height ) 
-    console.log(canvash, canvasw)
-    var rect = new fabric.Rect({
-      left: -1,
-      top: -2,
-      fill: 'white',
-      width: canvasw,
-      height: canvash
-    });
+
+    // $("#c").css("background-color", "white")
+    // var rect = new fabric.Rect();
+    rect.set({ width: canvas.width * 1.5, height: canvas.height * 1.5, fill: 'white', stroke: null, left: -2, top: -2, active: true });
+    canvas.setActiveObject(rect);
     canvas.add(rect);
-    console.log(rect)
+    // canvas.sendToBack(rect)
+    // canvas.bringForward(rect)
     $("#light").hide()
     $("#dark").show()
+    
   }
   light()
 })
 $(document).on("click", '#dark', function (event) {
   function dark() {
-    var canvasw = (canvas.width )
-    var canvash = (canvas.height ) 
-    console.log(canvash, canvasw)
-    var rect = new fabric.Rect({
-      left: -1,
-      top: -2,
-      fill: 'black',
-      width: canvasw,
-      height: canvash
-    });
-    console.log(rect)
+    // $("#c").css("background-color", "black")
+    var rect = new fabric.Rect();
+    rect.set({ width: canvas.width * 1.5, height: canvas.height * 1.5, fill: 'black', stroke: null, left: -2, top: -2, active: true });
+    canvas.setActiveObject(rect);
     canvas.add(rect);
+    // canvas.sendToBack(rect)
+    // canvas.bringForward(rect)
     $("#dark").hide()
     $("#light").show()
   }
@@ -766,7 +759,7 @@ $(document).on("click", '#dark', function (event) {
 // $("#dark").onclick = function () { dark(), console.log("hello") };
 
 function instructions() {
-  fabric.Image.fromURL('instructions.jpg', function(oImg) {
+  fabric.Image.fromURL('instructions.jpg', function (oImg) {
     canvas.add(oImg.scale(0.5));
   });
 

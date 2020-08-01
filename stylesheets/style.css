@@ -255,6 +255,10 @@ button:focus { outline-style: none; }
   display: none;
 }
 
+#dark {
+  display: block;
+}
+
 #question {
   right: 10px;
   position: absolute;
