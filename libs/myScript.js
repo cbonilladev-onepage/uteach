@@ -85,6 +85,15 @@ $('#drawing-line-width').attr("class", "slider is-fullwidth")
 function clearCanvas() {
   canvas.clear()
 }
+
+$("#draw-toggle").on("click", function () {
+  if (document.getElementsByClassName("tools") == null) {
+    $("#box").show();
+    // console.log("hello")
+  }
+  $("#box").hide();
+})
+
 function addDraw() {
 
   canvas.isDrawingMode = !canvas.isDrawingMode;
@@ -313,23 +322,26 @@ function addDraw() {
     });
   }
 }
-$("#draw-toggle").on("click", function() {
+$("#draw-toggle").on("click", function () {
   $(this).toggleClass("toggle")
+
 })
-$("#emoji-toggle").on("click", function() {
+$("#emoji-toggle").on("click", function () {
   $(this).toggleClass("toggle2")
 })
+
+var shapeColor = "rgba(0,0,0,1)"
 function addPaper() {
   var rect = new fabric.Rect({
     left: 50,
     top: 50,
-    fill: 'white',
+    fill: shapeColor,
     width: 50,
     height: 65,
     centeredTotation: true
   });
 
-  rect.setShadow("5px 5px 15px rgb(200,200,200)");
+  // rect.setShadow("5px 5px 15px rgb(200,200,200)");
 
   canvas.add(rect);
 }
@@ -346,17 +358,19 @@ function heightAdjust() {
   }
 }
 
+
+
 function addBackground() {
   var rect = new fabric.Rect({
     left: 150,
     top: 50,
-    fill: 'white',
+    fill: shapeColor,
     width: 100,
     height: 65,
     centeredTotation: true
   });
 
-  rect.setShadow("5px 5px 15px rgb(200,200,200)");
+  // rect.setShadow("5px 5px 15px rgb(200,200,200)");
 
   canvas.add(rect);
 }
@@ -379,11 +393,11 @@ function addText() {
     editable: true,
     fontFamily: 'Roboto',
     fontWeight: 900,
-    fill: 'white',
+    fill: shapeColor,
     centeredTotation: true
   });
 
-  text.setShadow("5px 5px 15px rgb(200,200,200)");
+  // text.setShadow("5px 5px 15px rgb(200,200,200)");
 
   canvas.add(text);
 }
@@ -725,22 +739,18 @@ function downloadSVGCanvas() {
 
 
 
-
 var rect = new fabric.Rect();
 $(document).on("click", '#light', function (event) {
-
   function light() {
-
     // $("#c").css("background-color", "white")
     // var rect = new fabric.Rect();
-    rect.set({ width: canvas.width * 1.5, height: canvas.height * 1.5, fill: 'white', stroke: null, left: -2, top: -2, active: true });
+    rect.set({ width: canvas.width * 1.5, height: canvas.height * 1.5, fill: 'white', stroke: null, left: -2, top: -2, active: true, selectable: false, evented: false });
     canvas.setActiveObject(rect);
     canvas.add(rect);
     // canvas.sendToBack(rect)
     // canvas.bringForward(rect)
     $("#light").hide()
     $("#dark").show()
-    
   }
   light()
 })
@@ -748,7 +758,7 @@ $(document).on("click", '#dark', function (event) {
   function dark() {
     // $("#c").css("background-color", "black")
     var rect = new fabric.Rect();
-    rect.set({ width: canvas.width * 1.5, height: canvas.height * 1.5, fill: 'black', stroke: null, left: -2, top: -2, active: true });
+    rect.set({ width: canvas.width * 1.5, height: canvas.height * 1.5, fill: 'black', stroke: null, left: -2, top: -2, active: true, selectable: false, evented: false });
     canvas.setActiveObject(rect);
     canvas.add(rect);
     // canvas.sendToBack(rect)
@@ -815,3 +825,55 @@ function addWebcam() {
 //       document.querySelector("body").style.visibility = "visible"; 
 //   } 
 // }; 
+
+
+const pickr = Pickr.create({
+  el: '.color-picker',
+  theme: 'monolith', // or 'monolith', or 'nano'
+  default: '#000000',
+  swatches: [
+      'rgba(244, 67, 54, 1)',
+      'rgba(233, 30, 99, 0.95)',
+      'rgba(156, 39, 176, 0.9)',
+      'rgba(103, 58, 183, 0.85)',
+      'rgba(63, 81, 181, 0.8)',
+      'rgba(33, 150, 243, 0.75)',
+      'rgba(3, 169, 244, 0.7)',
+      'rgba(0, 188, 212, 0.7)',
+      'rgba(0, 150, 136, 0.75)',
+      'rgba(76, 175, 80, 0.8)',
+      'rgba(139, 195, 74, 0.85)',
+      'rgba(205, 220, 57, 0.9)',
+      'rgba(255, 235, 59, 0.95)',
+      'rgba(255, 193, 7, 1)'
+  ],
+
+  components: {
+
+      // Main components
+      preview: true,
+      opacity: true,
+      hue: true,
+
+      // Input / output Options
+      interaction: {
+          hex: true,
+          rgba: true,
+          cmyk: true,
+          input: true,
+          clear: true,
+          save: true
+      }
+  }
+});
+
+$(".pcr-save").on("click", function() {
+  var pickrColor1 = pickr.getColor().toRGBA()[0]
+  var pickrColor2 = pickr.getColor().toRGBA()[1]
+  var pickrColor3 = pickr.getColor().toRGBA()[2]
+  var pickrColor4 = pickr.getColor().toRGBA()[3]
+  console.log(pickrColor1, pickrColor2, pickrColor3, pickrColor4)
+  shapeColor = `rgba(${pickrColor1}, ${pickrColor2}, ${pickrColor3}, ${pickrColor4})`
+  console.log(shapeColor)
+  console.log('hello')
+})

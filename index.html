@@ -24,12 +24,15 @@
   <!-- <link rel="stylesheet" href="stylesheets/dat.gui.css">
   <link rel="stylesheet" href="stylesheets/github-light.css"> -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css" />
+  <!-- 'monolith' theme -->
 
-  <link  type="text/css" href="stylesheets/emoji.scss" rel="stylesheet">
-  <link  type="text/css" href="stylesheets/emoji.css.map" rel="stylesheet">
-  <link  type="text/css" href="stylesheets/emoji.css" rel="stylesheet">
-  <link  type="text/css" rel="stylesheet" href="stylesheets/style.css">
+  <link type="text/css" href="stylesheets/emoji.scss" rel="stylesheet">
+  <link type="text/css" href="stylesheets/emoji.css.map" rel="stylesheet">
+  <link type="text/css" href="stylesheets/emoji.css" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="stylesheets/style.css">
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css"> -->
+
 </head>
 
 <body>
@@ -56,17 +59,32 @@
 
       <button class="fa fa-file-video-o fa-lg" id="b" type="button" value="remove" onclick="addVid()"
         data-toggle="tooltip" data-placement="bottom" title="add video"></button>
-        <button class="fa fa-camera fa-lg" id="snap" type="button" onclick="addWebcam()" data-toggle="tooltip"
+      <button class="fa fa-camera fa-lg" id="snap" type="button" onclick="addWebcam()" data-toggle="tooltip"
         data-placement="bottom" title="add webcam"></button>
       <input type="text" id="url" name="url" placeholder="enter youtube url"></input>
       <input type="button" value="tubify" onclick=youtubeurl(url) data-toggle="tooltip" data-placement="bottom"
         title="tubify video"></button>
 
     </div>
+    <div class="colors">
+      <div class="color-picker" id="b" type="button" data-toggle="tooltip" data-placement="bottom" title="add paper">
+      </div>
+      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
+        data-placement="bottom" title="add paper"></button>
+      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
+        data-placement="bottom" title="add paper"></button>
+
+    </div>
     <div class="shapes">
       <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
         data-placement="bottom" title="add paper"></button>
-      <button class="fa fa-square-o fa-lg" id="b" type="button" onclick="addBackground()" data-toggle="tooltip"
+      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
+        data-placement="bottom" title="add paper"></button>
+      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
+        data-placement="bottom" title="add paper"></button>
+      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
+        data-placement="bottom" title="add paper"></button>
+      <button class="fa fa-sticky-note-o fa-lg" id="b" type="button" onclick="addBackground()" data-toggle="tooltip"
         data-placement="bottom" title="add poster"></button>
       <button class="fa fa-font fa-lg" id="b" type="text" onclick="addText()" data-toggle="tooltip"
         data-placement="bottom" title="add text"></button>
@@ -127,7 +145,8 @@
         <input type="color" value="#000000" id="drawing-color"><br>
 
         <label for="drawing-line-width">Line width:</label>
-        <span class="info" id="info1">15</span><input type="range" value="15" min="0" max="150" id="drawing-line-width" oninput="slideitWidth()"><br>
+        <span class="info" id="info1">15</span><input type="range" value="15" min="0" max="150" id="drawing-line-width"
+          oninput="slideitWidth()"><br>
 
 
 
@@ -135,20 +154,22 @@
         <input type="color" value="#000000" id="drawing-shadow-color"><br>
 
         <label for="drawing-shadow-width">Shadow width:</label>
-        <span class="info" id="info2">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width" oninput="slideitSWidth()"><br>
+        <span class="info" id="info2">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width"
+          oninput="slideitSWidth()"><br>
 
         <label for="drawing-shadow-offset">Shadow offset:</label>
-        <span class="info" id="info3">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset" oninput="slideitSOffset()"><br>
+        <span class="info" id="info3">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset"
+          oninput="slideitSOffset()"><br>
       </div>
     </div>
     <div id="outfitChange" class="outfitChange">
 
-      <button class="fa fa-heart fa-lg" id="dark"  title="black background"></button>
-      <button class="fa fa-heart-o fa-lg" aria-hidden="true" id="light"title="white background"></button>
+      <button class="fa fa-heart fa-lg" id="dark" title="black background"></button>
+      <button class="fa fa-heart-o fa-lg" aria-hidden="true" id="light" title="white background"></button>
 
     </div>
     <div>
-      <button class="fa fa-question fa-lg" id="question" onclick="instructions()"  title="help"></button>
+      <button class="fa fa-question fa-lg" id="question" onclick="instructions()" title="help"></button>
     </div>
   </div>
 
@@ -162,15 +183,24 @@
 
 
 
-
+  <div id="box"></div>
 
 
   <script src="libs/dat.gui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 
   <!-- <script src="libs/config.js"></script>
   <script src="libs/util.js"></script>
   <script src="libs/jquery.emojiarea.js"></script> -->
   <script src="libs/emoji-picker.js"></script>
+  <script>
+    $("#drawing-line-width").on("input", function (e) {
+      var v = $(this).val();            // brush size value, example usage:
+      //ctx.lineWidth = v;              // context line-width
+      $("#box").html($(this).val());    // textual repr.
+      $("#box").width(v).height(v);     // brush size rep.
+    });
+  </script>
   <script>
     $(function () {
       // Initializes and creates emoji set from sprite sheet
@@ -189,8 +219,16 @@
   <script src="libs/fabric.min.js"></script>
   <script src="libs/fabric-brush.min.js"></script>
 
-  
-  
+
+  <script>
+    var bx = document.getElementById("box");
+    document.addEventListener('mousemove', function (e) {
+      var x = e.clientX;
+      var y = e.clientY;
+      bx.style.left = x - (($("#box").width()) / 2) + "px";
+      bx.style.top = y - (($("#box").width()) / 2) + "px";
+    })
+  </script>
 
   <script src="libs/myScript.js"></script>
 </body>

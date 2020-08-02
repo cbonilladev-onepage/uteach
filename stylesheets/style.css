@@ -269,7 +269,9 @@ button:focus { outline-style: none; }
 #info3 {
   /* display: block; */
   position: absolute;
+
 }
+
 
 .toggle {
   background-color: lightgray;
@@ -297,4 +299,27 @@ button:focus { outline-style: none; }
 
 #logo {
   width: 50px;
+}
+
+#box {
+  background-color:black; 
+  width:15px; 
+  height:15px; 
+  position:absolute; 
+  border-radius:50%; 
+  pointer-events: none;
+  z-index: 99;
+  text-align: center;
+  display: none;
+  opacity: 20%;
+}
+
+.pcr-app.visible {
+  width: 217px;
+}
+
+.pickr .pcr-button {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
 }
