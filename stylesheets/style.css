@@ -279,3 +279,22 @@ button:focus { outline-style: none; }
   background-color: lightgray;
   padding: .2em .3em .2em .3em;
 }
+
+#loader {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  background-image: url("../uteachist.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 500px;
+}
+
+#logo {
+  width: 50px;
+}
