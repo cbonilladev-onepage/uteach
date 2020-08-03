@@ -716,9 +716,14 @@ function addMoji() {
 
 document.onkeydown = function (e) {
   switch (e.which) {
+
     case 8: // left
+    if ($(".emoji-menu").is(":hidden") == true) {
       deleteObj();
       break;
+    } else {
+      break;
+    }
 
     case 67: // up
       copyObj();
@@ -749,7 +754,6 @@ document.onkeydown = function (e) {
       break;
 
     case 70: // down
-      console.log("hello")
       toFront()
       break;
 
