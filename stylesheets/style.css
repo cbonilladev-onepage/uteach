@@ -323,3 +323,17 @@ button:focus { outline-style: none; }
   height: 1.5em;
   border-radius: 50%;
 }
+
+#shadowon {
+  padding: .3em;
+  display: none;
+}
+#shadowoff {
+  padding: .3em;
+}
+
+.colors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

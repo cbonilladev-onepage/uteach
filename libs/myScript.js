@@ -331,6 +331,7 @@ $("#emoji-toggle").on("click", function () {
 })
 
 var shapeColor = "rgba(0,0,0,1)"
+var addShadow = ""
 function addPaper() {
   var rect = new fabric.Rect({
     left: 50,
@@ -341,9 +342,50 @@ function addPaper() {
     centeredTotation: true
   });
 
-  // rect.setShadow("5px 5px 15px rgb(200,200,200)");
+  rect.setShadow(addShadow);
 
   canvas.add(rect);
+}
+function addCircle() {
+  var circle = new fabric.Circle({
+    radius: 50,
+    fill: shapeColor,
+    left: 50,
+    top: 50
+  });
+
+  circle.setShadow(addShadow);
+
+  canvas.add(circle); 
+
+}
+function addSquare() {
+  var sqr = new fabric.Rect({
+    left: 50,
+    top: 50,
+    fill: shapeColor,
+    width: 100,
+    height: 50,
+    centeredTotation: true
+  });
+
+  sqr.setShadow(addShadow);
+
+  canvas.add(sqr);
+}
+function addTriangle() {
+  var tri = new fabric.Triangle({
+    left: 50,
+    top: 50,
+    fill: shapeColor,
+    width: 75,
+    height: 75,
+    centeredTotation: true
+  });
+
+  tri.setShadow(addShadow);
+
+  canvas.add(tri);
 }
 
 function heightAdjust() {
@@ -370,7 +412,7 @@ function addBackground() {
     centeredTotation: true
   });
 
-  // rect.setShadow("5px 5px 15px rgb(200,200,200)");
+  rect.setShadow(addShadow);
 
   canvas.add(rect);
 }
@@ -397,7 +439,7 @@ function addText() {
     centeredTotation: true
   });
 
-  // text.setShadow("5px 5px 15px rgb(200,200,200)");
+  text.setShadow(addShadow);
 
   canvas.add(text);
 }
@@ -634,7 +676,7 @@ function clicker() {
       centeredTotation: true
     });
 
-    // text.setShadow("5px 5px 15px rgb(200,200,200)");
+    text.setShadow(addShadow);
 
     canvas.add(text);
   }
@@ -695,15 +737,15 @@ document.onkeydown = function (e) {
       break;
 
     case 90: // down
-      if (canvas.isDrawingMode == true) {
+      // if (canvas.isDrawingMode == true) {
         undo()
-      }
+      // }
       break;
 
     case 89: // down
-      if (canvas.isDrawingMode == true) {
+      // if (canvas.isDrawingMode == true) {
         redo()
-      }
+      // }
       break;
 
     case 70: // down
@@ -768,7 +810,6 @@ $(document).on("click", '#dark', function (event) {
   }
   dark()
 })
-
 
 
 // $("#light").onclick = function () { light() };
@@ -872,8 +913,20 @@ $(".pcr-save").on("click", function() {
   var pickrColor2 = pickr.getColor().toRGBA()[1]
   var pickrColor3 = pickr.getColor().toRGBA()[2]
   var pickrColor4 = pickr.getColor().toRGBA()[3]
-  console.log(pickrColor1, pickrColor2, pickrColor3, pickrColor4)
   shapeColor = `rgba(${pickrColor1}, ${pickrColor2}, ${pickrColor3}, ${pickrColor4})`
-  console.log(shapeColor)
-  console.log('hello')
+
+})
+
+$("#shadowon").on("click", function() {
+  $("#shadowoff").show();
+  $("#shadowon").hide();
+  addShadow = ""
+})
+$("#shadowoff").on("click", function() {
+  $("#shadowoff").hide();
+  $("#shadowon").show();
+  addShadow = "5px 5px 15px rgb(200,200,200)"
+
+  
+
 })

@@ -32,6 +32,9 @@
   <link type="text/css" href="stylesheets/emoji.css" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="stylesheets/style.css">
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css"> -->
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
 
 </head>
 
@@ -69,19 +72,19 @@
     <div class="colors">
       <div class="color-picker" id="b" type="button" data-toggle="tooltip" data-placement="bottom" title="add paper">
       </div>
-      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
-        data-placement="bottom" title="add paper"></button>
-      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
-        data-placement="bottom" title="add paper"></button>
+      <button class="fas fa-minus-square fa-lg" id="shadowon" type="button" data-toggle="tooltip"
+        data-placement="bottom" title="shadow off"s></button>
+      <button class="fas fa-plus-square fa-lg" id="shadowoff" type="button" data-toggle="tooltip"
+        data-placement="bottom" title="shadow on"></button>
 
     </div>
     <div class="shapes">
-      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
-        data-placement="bottom" title="add paper"></button>
-      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
-        data-placement="bottom" title="add paper"></button>
-      <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
-        data-placement="bottom" title="add paper"></button>
+      <button class="far fa-circle fa-lg" id="b" type="button" onclick="addCircle()" data-toggle="tooltip"
+        data-placement="bottom" title="add circle"></button>
+      <button class="far fa-square fa-lg" id="b" type="button" onclick="addSquare()" data-toggle="tooltip"
+        data-placement="bottom" title="add square"></button>
+      <button class="" id="b" type="button" onclick="addTriangle()" data-toggle="tooltip"
+        data-placement="bottom" title="add triangle" style="font-size: 25px;">△</button>
       <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
         data-placement="bottom" title="add paper"></button>
       <button class="fa fa-sticky-note-o fa-lg" id="b" type="button" onclick="addBackground()" data-toggle="tooltip"
@@ -231,6 +234,7 @@
   </script>
 
   <script src="libs/myScript.js"></script>
+  <script src="https://use.fontawesome.com/79b4fe23a3.js"></script>
 </body>
 
 </html>
