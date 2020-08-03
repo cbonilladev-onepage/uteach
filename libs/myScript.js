@@ -934,7 +934,7 @@ $("#shadowon").on("click", function() {
 $("#shadowoff").on("click", function() {
   $("#shadowoff").hide();
   $("#shadowon").show();
-  addShadow = "5px 5px 15px rgb(200,200,200)"
+  addShadow = "5px 5px 15px rgba(0,0,0,0.5)"
 
   
 
