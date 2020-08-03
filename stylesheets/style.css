@@ -316,8 +316,9 @@ button:focus { outline-style: none; }
   z-index: 99;
   text-align: center;
   display: none;
-  opacity: 20%;
+  opacity: 50%;
   left: 50px;
+  
 }
 
 .pcr-app.visible {
