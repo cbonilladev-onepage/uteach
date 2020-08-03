@@ -153,7 +153,7 @@ pre::-webkit-scrollbar {
   flex-direction: row;
   padding: 1em;
   background-color: whitesmoke;
-  height: 26vh;
+  /* height: 26vh; */
 }
 
 #drawing-mode {
