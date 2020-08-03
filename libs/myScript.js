@@ -87,12 +87,17 @@ function clearCanvas() {
 }
 
 $("#draw-toggle").on("click", function () {
-  if (document.getElementsByClassName("tools") == null) {
+  if ($("#drawing-mode-options").is(":hidden") == false) {
     $("#box").show();
-    // console.log("hello")
+  } else {
+    $("#box").hide();
   }
-  $("#box").hide();
 })
+
+$("#drawing-color").on('change', function() {
+  var newColor = $("#drawing-color").val();
+  $("#box").css("background-color", newColor)
+}) 
 
 function addDraw() {
 

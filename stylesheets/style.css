@@ -186,8 +186,10 @@ pre::-webkit-scrollbar {
 
 .emoji-picker-icon {
   top: -.25em;
-  font-size: 50px;
   right: -1em;
+  color: black;
+  background-color: yellow;
+  border-radius: 50%;;
 }
 
 #controls > div.shapes > div > div.emoji-menu {
@@ -250,6 +252,7 @@ button:focus { outline-style: none; }
 #outfitChange {
   position: absolute;
   right: 40px;
+  top: 10px;
 }
 
 #light {
@@ -262,6 +265,7 @@ button:focus { outline-style: none; }
 
 #question {
   right: 10px;
+  top: 26px;
   position: absolute;
 }
 
@@ -313,6 +317,7 @@ button:focus { outline-style: none; }
   text-align: center;
   display: none;
   opacity: 20%;
+  left: 50px;
 }
 
 .pcr-app.visible {
@@ -338,3 +343,20 @@ button:focus { outline-style: none; }
   justify-content: center;
   align-items: center;
 }
+
+.inserts {
+  display: flex;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+.zindex,
+.draw,
+.options {
+  display: flex;
+  align-items: center;
+}
+
