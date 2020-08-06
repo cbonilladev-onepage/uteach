@@ -939,3 +939,8 @@ $("#shadowoff").on("click", function() {
   
 
 })
+
+$(window).load(function() {
+  $('#loading').hide();
+});
+

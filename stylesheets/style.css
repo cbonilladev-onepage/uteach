@@ -105,8 +105,6 @@ iframe {
 
 
 
-
-
 .hide {
   display: none;
 }
@@ -149,11 +147,16 @@ pre::-webkit-scrollbar {
 }
 
 #drawing-mode-options {
-  display: column;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   padding: 1em;
   background-color: whitesmoke;
-  /* height: 26vh; */
+  height: 270px;
+  width: 100%;
+}
+
+#drawing-mode-options div {
+  padding: .5em;
 }
 
 #drawing-mode {
@@ -182,6 +185,8 @@ pre::-webkit-scrollbar {
   word-wrap: break-word;
   border: none;
   background-color: none;
+  position: absolute;
+  left: 6em;
 }
 
 .emoji-picker-icon {
@@ -195,6 +200,8 @@ pre::-webkit-scrollbar {
 #controls > div.shapes > div > div.emoji-menu {
   width: 380px;
   /* opacity: 50%; */
+  top: 2em;
+  left: 5em;
 }
 
 button:focus { outline-style: none; }
@@ -361,3 +368,11 @@ label {
   align-items: center;
 }
 
+#tri {
+  width: 23px;
+
+}
+
+#controls > div.shapes > div > span {
+  font-size: 5em;
+}

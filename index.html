@@ -32,15 +32,26 @@
   <link type="text/css" href="stylesheets/emoji.css" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="stylesheets/style.css">
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css"> -->
-  
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css" />
+  <!-- 'nano' theme -->
 
 
 </head>
 
 <body>
+  <script src="libs/jscolor.js"></script>
 
-  <!-- <div id="loader"></div> -->
+  <script>
+    jscolor.presets.default = {
+      format:'rgba'
+    };
+    </script>
+  <div id="loading">
+    <img id="loading-image" src="uteachist.jpg" alt="Loading..." />
+  </div>
   <div class="controls" id="controls">
     <!-- <embed src="uteach3.svg" id="logo"> -->
     <div class="draw">
@@ -64,16 +75,16 @@
         data-toggle="tooltip" data-placement="bottom" title="add video"></button>
       <button class="fa fa-camera fa-lg" id="snap" type="button" onclick="addWebcam()" data-toggle="tooltip"
         data-placement="bottom" title="add webcam"></button>
-      <input type="text" id="url" name="url" placeholder="enter youtube url"></input>
-      <input type="button" value="tubify" onclick=youtubeurl(url) data-toggle="tooltip" data-placement="bottom"
+      <input class="form-control" type="text" id="url" name="url" placeholder="enter youtube url"></input>
+      <input class="btn btn-dark" type="button" value="tubify" onclick=youtubeurl(url) data-toggle="tooltip" data-placement="bottom"
         title="tubify video"></button>
 
     </div>
     <div class="colors">
       <div class="color-picker" id="b" type="button" data-toggle="tooltip" data-placement="bottom" title="add paper">
       </div>
-      <button class="fas fa-plus-square fa-lg" id="shadowon" type="button" data-toggle="tooltip"
-        data-placement="bottom" title="shadow on"></button>
+      <button class="fas fa-plus-square fa-lg" id="shadowon" type="button" data-toggle="tooltip" data-placement="bottom"
+        title="shadow on"></button>
       <button class="fas fa-minus-square fa-lg" id="shadowoff" type="button" data-toggle="tooltip"
         data-placement="bottom" title="shadow off"></button>
 
@@ -83,8 +94,8 @@
         data-placement="bottom" title="add circle"></button>
       <button class="far fa-square fa-lg" id="b" type="button" onclick="addSquare()" data-toggle="tooltip"
         data-placement="bottom" title="add square"></button>
-      <button class="" id="b" type="button" onclick="addTriangle()" data-toggle="tooltip"
-        data-placement="bottom" title="add triangle" style="font-size: 25px;">△</button>
+      <button class="" type="button" onclick="addTriangle()" data-toggle="tooltip" data-placement="bottom"
+        title="add triangle"><img id="tri" src="triangle.svg" alt="" srcset=""></button>
       <button class="fa fa-pencil-square-o fa-lg" id="b" type="button" onclick="addPaper()" data-toggle="tooltip"
         data-placement="bottom" title="add paper"></button>
       <button class="fa fa-sticky-note-o fa-lg" id="b" type="button" onclick="addBackground()" data-toggle="tooltip"
@@ -125,45 +136,53 @@
       <!-- <button id="clear-canvas" class="btn btn-info">Clear</button><br> -->
 
       <div id="drawing-mode-options">
-        <label for="drawing-mode-selector">Mode:</label>
-        <select id="drawing-mode-selector">
-          <option id="choice">Pencil</option>
-          <option id="choice">Circle</option>
-          <option id="choice">Spray</option>
-          <option id="choice">Pattern</option>
+        <div>
+          <label for="drawing-mode-selector">Mode:</label>
+          <select id="drawing-mode-selector">
+            <option id="choice">Pencil</option>
+            <option id="choice">Circle</option>
+            <option id="choice">Spray</option>
+            <option id="choice">Pattern</option>
 
-          <option id="choice">hline</option>
-          <option id="choice">vline</option>
-          <option id="choice">square</option>
-          <option id="choice">diamond</option>
-          <option id="choice">texture</option>
+            <option id="choice">hline</option>
+            <option id="choice">vline</option>
+            <option id="choice">square</option>
+            <option id="choice">diamond</option>
+            <option id="choice">texture</option>
 
-          <option id="choice">CrayonBrush</option>
-          <option id="choice">InkBrush</option>
-          <option id="choice">MarkerBrush</option>
-          <option id="choice">RealSprayBrush</option>
-        </select><br>
-
-        <label for="drawing-color">Line color:</label>
-        <input type="color" value="#000000" id="drawing-color"><br>
-
-        <label for="drawing-line-width">Line width:</label>
-        <span class="info" id="info1">15</span><input type="range" value="15" min="0" max="150" id="drawing-line-width"
-          oninput="slideitWidth()"><br>
-
-
-
-        <label for="drawing-shadow-color">Shadow color:</label>
-        <input type="color" value="#000000" id="drawing-shadow-color"><br>
-
-        <label for="drawing-shadow-width">Shadow width:</label>
-        <span class="info" id="info2">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width"
-          oninput="slideitSWidth()"><br>
-
-        <label for="drawing-shadow-offset">Shadow offset:</label>
-        <span class="info" id="info3">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset"
-          oninput="slideitSOffset()"><br>
+            <option id="choice">CrayonBrush</option>
+            <option id="choice">InkBrush</option>
+            <option id="choice">MarkerBrush</option>
+            <option id="choice">RealSprayBrush</option>
+          </select><br>
+        </div>
+          <div>
+            <label for="drawing-color">Line color:</label>
+            <input id="drawing-color" value="#000000" data-jscolor=""><br>
+            <!-- <input type="color" value="#000000" id="drawing-color"><br> -->
+          </div>
+          <div>
+            <label for="drawing-line-width">Line width:</label>
+            <span class="info" id="info1">15</span><input type="range" value="15" min="0" max="150"
+              id="drawing-line-width" oninput="slideitWidth()"><br>
+          </div>
+          <div>
+            <label for="drawing-shadow-color">Shadow color:</label>
+            <!-- <input type="color" value="#000000" id="drawing-shadow-color"><br> -->
+            <input id="drawing-shadow-color" value="#000000" data-jscolor=""><br>
+          </div>
+          <div>
+            <label for="drawing-shadow-width">Shadow width:</label>
+            <span class="info" id="info2">0</span><input type="range" value="0" min="0" max="50"
+              id="drawing-shadow-width" oninput="slideitSWidth()"><br>
+          </div>
+          <div>
+            <label for="drawing-shadow-offset">Shadow offset:</label>
+            <span class="info" id="info3">0</span><input type="range" value="0" min="0" max="50"
+              id="drawing-shadow-offset" oninput="slideitSOffset()"><br>
+          </div>
       </div>
+
     </div>
     <div id="outfitChange" class="outfitChange">
 
