@@ -94,10 +94,10 @@ $("#draw-toggle").on("click", function () {
   }
 })
 
-$("#drawing-color").on('change', function() {
+$("#drawing-color").on('change', function () {
   var newColor = $("#drawing-color").val();
   $("#box").css("background-color", newColor)
-}) 
+})
 
 function addDraw() {
 
@@ -361,7 +361,7 @@ function addCircle() {
 
   circle.setShadow(addShadow);
 
-  canvas.add(circle); 
+  canvas.add(circle);
 
 }
 function addSquare() {
@@ -723,12 +723,12 @@ document.onkeydown = function (e) {
   switch (e.which) {
 
     case 8: // left
-    if ($(".emoji-menu").is(":hidden") == true) {
-      deleteObj();
-      break;
-    } else {
-      break;
-    }
+      if ($(".emoji-menu").is(":hidden") == true) {
+        deleteObj();
+        break;
+      } else {
+        break;
+      }
 
     case 67: // up
       copyObj();
@@ -748,13 +748,13 @@ document.onkeydown = function (e) {
 
     case 90: // down
       // if (canvas.isDrawingMode == true) {
-        undo()
+      undo()
       // }
       break;
 
     case 89: // down
       // if (canvas.isDrawingMode == true) {
-        redo()
+      redo()
       // }
       break;
 
@@ -882,42 +882,42 @@ const pickr = Pickr.create({
   theme: 'monolith', // or 'monolith', or 'nano'
   default: '#000000',
   swatches: [
-      'rgba(244, 67, 54, 1)',
-      'rgba(233, 30, 99, 0.95)',
-      'rgba(156, 39, 176, 0.9)',
-      'rgba(103, 58, 183, 0.85)',
-      'rgba(63, 81, 181, 0.8)',
-      'rgba(33, 150, 243, 0.75)',
-      'rgba(3, 169, 244, 0.7)',
-      'rgba(0, 188, 212, 0.7)',
-      'rgba(0, 150, 136, 0.75)',
-      'rgba(76, 175, 80, 0.8)',
-      'rgba(139, 195, 74, 0.85)',
-      'rgba(205, 220, 57, 0.9)',
-      'rgba(255, 235, 59, 0.95)',
-      'rgba(255, 193, 7, 1)'
+    'rgba(244, 67, 54, 1)',
+    'rgba(233, 30, 99, 0.95)',
+    'rgba(156, 39, 176, 0.9)',
+    'rgba(103, 58, 183, 0.85)',
+    'rgba(63, 81, 181, 0.8)',
+    'rgba(33, 150, 243, 0.75)',
+    'rgba(3, 169, 244, 0.7)',
+    'rgba(0, 188, 212, 0.7)',
+    'rgba(0, 150, 136, 0.75)',
+    'rgba(76, 175, 80, 0.8)',
+    'rgba(139, 195, 74, 0.85)',
+    'rgba(205, 220, 57, 0.9)',
+    'rgba(255, 235, 59, 0.95)',
+    'rgba(255, 193, 7, 1)'
   ],
 
   components: {
 
-      // Main components
-      preview: true,
-      opacity: true,
-      hue: true,
+    // Main components
+    preview: true,
+    opacity: true,
+    hue: true,
 
-      // Input / output Options
-      interaction: {
-          hex: true,
-          rgba: true,
-          cmyk: true,
-          input: true,
-          clear: true,
-          save: true
-      }
+    // Input / output Options
+    interaction: {
+      hex: true,
+      rgba: true,
+      cmyk: true,
+      input: true,
+      clear: true,
+      save: true
+    }
   }
 });
 
-$(".pcr-save").on("click", function() {
+$(".pcr-save").on("click", function () {
   var pickrColor1 = pickr.getColor().toRGBA()[0]
   var pickrColor2 = pickr.getColor().toRGBA()[1]
   var pickrColor3 = pickr.getColor().toRGBA()[2]
@@ -926,21 +926,57 @@ $(".pcr-save").on("click", function() {
 
 })
 
-$("#shadowon").on("click", function() {
+$("#shadowon").on("click", function () {
   $("#shadowoff").show();
   $("#shadowon").hide();
   addShadow = ""
 })
-$("#shadowoff").on("click", function() {
+$("#shadowoff").on("click", function () {
   $("#shadowoff").hide();
   $("#shadowon").show();
   addShadow = "5px 5px 15px rgba(0,0,0,0.5)"
 
-  
+
 
 })
 
-$(window).load(function() {
+$(window).load(function () {
   $('#loading').hide();
 });
 
+$("#record").on("click", function () {
+
+  if ($("#record").hasClass("recording") == false) {
+    $("#record").addClass("recording")
+    $("#controls").css("border-bottom", "red solid 1px")
+  } else {
+    $("#record").removeClass("recording")
+    $("#controls").css("border-bottom", "black solid 1px")   
+  }
+})
+
+
+// function record() {
+//   var canvas = document.querySelector("#c");
+
+//   var video = document.querySelector("#recording");
+//   var videoStream = canvas.captureStream(30);
+//   var mediaRecorder = new MediaRecorder(videoStream);
+
+//   var chunks = [];
+//   mediaRecorder.ondataavailable = function (e) {
+//     chunks.push(e.data);
+//   };
+
+//   mediaRecorder.onstop = function (e) {
+//     var blob = new Blob(chunks, { 'type': 'video/mp4' });
+//     chunks = [];
+//     var videoURL = URL.createObjectURL(blob);
+//     video.src = videoURL;
+//   };
+//   mediaRecorder.ondataavailable = function (e) {
+//     chunks.push(e.data);
+//   };
+//   mediaRecorder.start();
+//   mediaRecorder.stop();
+// }

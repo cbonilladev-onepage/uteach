@@ -46,11 +46,14 @@
 
   <script>
     jscolor.presets.default = {
-      format:'rgba'
+      format: 'rgba'
     };
-    </script>
+  </script>
   <div id="loading">
     <img id="loading-image" src="uteachist.jpg" alt="Loading..." />
+  </div>
+  <div id="downloadRecording">
+    <video id="recording"></video>
   </div>
   <div class="controls" id="controls">
     <!-- <embed src="uteach3.svg" id="logo"> -->
@@ -76,8 +79,8 @@
       <button class="fa fa-camera fa-lg" id="snap" type="button" onclick="addWebcam()" data-toggle="tooltip"
         data-placement="bottom" title="add webcam"></button>
       <input class="form-control" type="text" id="url" name="url" placeholder="enter youtube url"></input>
-      <input class="btn btn-dark" type="button" value="tubify" onclick=youtubeurl(url) data-toggle="tooltip" data-placement="bottom"
-        title="tubify video"></button>
+      <input class="btn btn-dark" type="button" value="tubify" onclick=youtubeurl(url) data-toggle="tooltip"
+        data-placement="bottom" title="tubify video"></button>
 
     </div>
     <div class="colors">
@@ -156,35 +159,36 @@
             <option id="choice">RealSprayBrush</option>
           </select><br>
         </div>
-          <div>
-            <label for="drawing-color">Line color:</label>
-            <input id="drawing-color" value="#000000" data-jscolor=""><br>
-            <!-- <input type="color" value="#000000" id="drawing-color"><br> -->
-          </div>
-          <div>
-            <label for="drawing-line-width">Line width:</label>
-            <span class="info" id="info1">15</span><input type="range" value="15" min="0" max="150"
-              id="drawing-line-width" oninput="slideitWidth()"><br>
-          </div>
-          <div>
-            <label for="drawing-shadow-color">Shadow color:</label>
-            <!-- <input type="color" value="#000000" id="drawing-shadow-color"><br> -->
-            <input id="drawing-shadow-color" value="#000000" data-jscolor=""><br>
-          </div>
-          <div>
-            <label for="drawing-shadow-width">Shadow width:</label>
-            <span class="info" id="info2">0</span><input type="range" value="0" min="0" max="50"
-              id="drawing-shadow-width" oninput="slideitSWidth()"><br>
-          </div>
-          <div>
-            <label for="drawing-shadow-offset">Shadow offset:</label>
-            <span class="info" id="info3">0</span><input type="range" value="0" min="0" max="50"
-              id="drawing-shadow-offset" oninput="slideitSOffset()"><br>
-          </div>
+        <div>
+          <label for="drawing-color">Line color:</label>
+          <input id="drawing-color" value="#000000" data-jscolor=""><br>
+          <!-- <input type="color" value="#000000" id="drawing-color"><br> -->
+        </div>
+        <div>
+          <label for="drawing-line-width">Line width:</label>
+          <span class="info" id="info1">15</span><input type="range" value="15" min="0" max="150"
+            id="drawing-line-width" oninput="slideitWidth()"><br>
+        </div>
+        <div>
+          <label for="drawing-shadow-color">Shadow color:</label>
+          <!-- <input type="color" value="#000000" id="drawing-shadow-color"><br> -->
+          <input id="drawing-shadow-color" value="#000000" data-jscolor=""><br>
+        </div>
+        <div>
+          <label for="drawing-shadow-width">Shadow width:</label>
+          <span class="info" id="info2">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width"
+            oninput="slideitSWidth()"><br>
+        </div>
+        <div>
+          <label for="drawing-shadow-offset">Shadow offset:</label>
+          <span class="info" id="info3">0</span><input type="range" value="0" min="0" max="50"
+            id="drawing-shadow-offset" oninput="slideitSOffset()"><br>
+        </div>
       </div>
 
     </div>
     <div id="outfitChange" class="outfitChange">
+
 
       <button class="fa fa-heart fa-lg" id="dark" title="black background"></button>
       <button class="fa fa-heart-o fa-lg" aria-hidden="true" id="light" title="white background"></button>
@@ -192,6 +196,7 @@
     </div>
     <div>
       <button class="fa fa-question fa-lg" id="question" onclick="instructions()" title="help"></button>
+      <button class="fas fa-circle fa-lg" id="record" title="record"></button>
     </div>
   </div>
 

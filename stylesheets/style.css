@@ -186,7 +186,8 @@ pre::-webkit-scrollbar {
   border: none;
   background-color: none;
   position: absolute;
-  left: 6em;
+  /* left: 6em; */
+  right: .1em;
 }
 
 .emoji-picker-icon {
@@ -201,7 +202,7 @@ pre::-webkit-scrollbar {
   width: 380px;
   /* opacity: 50%; */
   top: 2em;
-  left: 5em;
+  /* left: 5em; */
 }
 
 button:focus { outline-style: none; }
@@ -323,7 +324,7 @@ button:focus { outline-style: none; }
   z-index: 99;
   text-align: center;
   display: none;
-  opacity: 50%;
+  opacity: 90%;
   left: 50px;
   
 }
@@ -376,3 +377,18 @@ label {
 #controls > div.shapes > div > span {
   font-size: 5em;
 }
+
+#record {
+  position: absolute;
+  top: 1.2em;
+  right: 3.8em;
+}
+
+.recording {
+  color: red;
+}
+
+/* #recordings {
+  display: none;
+} */
+
