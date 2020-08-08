@@ -940,21 +940,302 @@ $("#shadowoff").on("click", function () {
 
 })
 
-$(window).load(function () {
-  $('#loading').hide();
+// $(window).load(function () {
+//   $('#loading').hide();
+// });
+
+// $("#record").on("click", function () {
+
+//   if ($("#record").hasClass("recording") == false) {
+//     $("#record").addClass("recording")
+//     $("#controls").css("border-bottom", "red solid 1px")
+//     const { createFFmpeg } = FFmpeg;
+//     const ffmpeg = createFFmpeg({
+//       log: true
+//     });
+
+//     const transcode = async (webcamData) => {
+//       const name = 'record.webm';
+//       await ffmpeg.load();
+//       await ffmpeg.write(name, webcamData);
+//       await ffmpeg.transcode(name, 'output.mp4');
+//       const data = ffmpeg.read('output.mp4');
+
+//       const video = document.getElementById('output-video');
+//       video.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
+//       dl.href = video.src;
+//       dl.innerHTML = "download mp4"
+//     }
+
+//     fn().then(async ({ url, blob }) => {
+//       transcode(new Uint8Array(await (blob).arrayBuffer()));
+//     })
+
+//     function fn() {
+//       var recordedChunks = [];
+
+//       var time = 0;
+//       var canvas = document.getElementById("c");
+
+//       return new Promise(function (res, rej) {
+//         var stream = canvas.captureStream(60);
+
+//         mediaRecorder = new MediaRecorder(stream, {
+//           mimeType: "video/webm; codecs=vp9"
+//         });
+
+//         mediaRecorder.start(time);
+
+//         mediaRecorder.ondataavailable = function (e) {
+//           recordedChunks.push(event.data);
+//           // for demo, removed stop() call to capture more than one frame
+//         }
+
+//         mediaRecorder.onstop = function (event) {
+//           var blob = new Blob(recordedChunks, {
+//             "type": "video/webm"
+//           });
+//           var url = URL.createObjectURL(blob);
+//           res({ url, blob }); // resolve both blob and url in an object
+
+//           myVideo.src = url;
+//           // removed data url conversion for brevity
+//         }
+
+//         // for demo, draw random lines and then stop recording
+//         var i = 0,
+//           tid = setInterval(() => {
+//             if (i++ > 20) { // draw 20 lines
+//               clearInterval(tid);
+//               mediaRecorder.stop();
+//             }
+//             let canvas = document.querySelector("canvas");
+//             let cx = canvas.getContext("2d");
+//             cx.beginPath();
+//             cx.strokeStyle = 'green';
+//             cx.moveTo(Math.random() * 100, Math.random() * 100);
+//             cx.lineTo(Math.random() * 100, Math.random() * 100);
+//             cx.stroke();
+//           }, 200)
+
+//       });
+//     }
+
+//   } else {
+//     $("#record").removeClass("recording")
+//     $("#controls").css("border-bottom", "black solid 1px")   
+//     var canvas = document.getElementById("c");
+
+//     var stream = canvas.captureStream(60);
+//     mediaRecorder = new MediaRecorder(stream, {
+//       mimeType: "video/webm; codecs=vp9"
+//     });
+//     mediaRecorder.stop();
+//     $("#dl").click()
+//   }
+// })
+// $("#dl").change(function () {
+//   var videoLink = document.getElementById("dl")
+//   if (videoLink.href == /(blob:)\w+/) {
+//     function downloadVideo() {
+//       var recording = document.querySelector("#dl")
+//       recording.click()
+//     }
+//     downloadVideo();
+//   }
+// })
+function downloadVideo() {
+  var recording = document.querySelector("#dl")
+  recording.click()
+}
+
+var element = document.querySelector('#dl');
+
+var observer = new MutationObserver(function (mutations) {
+  mutations.forEach(function (mutation) {
+    if (mutation.type == "attributes") {
+      downloadVideo()
+    }
+  });
 });
 
-$("#record").on("click", function () {
+observer.observe(element, {
+  attributes: true //configure it to listen to attribute changes
+});
+
+const recordButton = document.querySelector("#record")
+recordButton.addEventListener('click', () => {
+  function startRecording() {
+
+    const { createFFmpeg } = FFmpeg;
+    const ffmpeg = createFFmpeg({
+      log: true
+    });
+
+    const transcode = async (webcamData) => {
+      const name = 'record.webm';
+      await ffmpeg.load();
+      await ffmpeg.write(name, webcamData);
+      await ffmpeg.transcode(name, 'output.mp4');
+      const data = ffmpeg.read('output.mp4');
+
+      const video = document.getElementById('output-video');
+      video.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
+      dl.href = video.src;
+    }
+
+    fn().then(async ({ url, blob }) => {
+      transcode(new Uint8Array(await (blob).arrayBuffer()));
+    })
+
+    function fn() {
+      var recordedChunks = [];
+
+      var time = 0;
+      var canvas = document.getElementById("c");
+
+      return new Promise(function (res, rej) {
+        var stream = canvas.captureStream(60);
+
+        mediaRecorder = new MediaRecorder(stream, {
+          mimeType: "video/webm; codecs=vp9"
+        });
+
+        mediaRecorder.start(time);
+
+        mediaRecorder.ondataavailable = function (e) {
+          recordedChunks.push(event.data);
+          // for demo, removed stop() call to capture more than one frame
+        }
+
+        mediaRecorder.onstop = function (event) {
+          var blob = new Blob(recordedChunks, {
+            "type": "video/webm"
+          });
+          var url = URL.createObjectURL(blob);
+          res({ url, blob }); // resolve both blob and url in an object
+
+          myVideo.src = url;
+          // removed data url conversion for brevity
+        }
+
+        // for demo, draw random lines and then stop recording
+        var i = 0,
+          tid = setInterval(() => {
+            if ($("#record").hasClass("recording") == false) {
+              clearInterval(tid);
+              mediaRecorder.stop();
+            }
+            i++
+            console.log(i)
+          }, 1000)
+
+      });
+    }
+  }
 
   if ($("#record").hasClass("recording") == false) {
+
     $("#record").addClass("recording")
     $("#controls").css("border-bottom", "red solid 1px")
+    startRecording()
+
   } else {
-    $("#record").removeClass("recording")
-    $("#controls").css("border-bottom", "black solid 1px")   
+    function stopIt() {
+      $("#record").removeClass("recording")
+      $("#controls").css("border-bottom", "black solid 1px")
+
+    }
+    stopIt();
   }
 })
 
+// $("#record").on("click", function () {
+//   function startRecording() {
+//     const { createFFmpeg } = FFmpeg;
+//     const ffmpeg = createFFmpeg({
+//       log: true
+//     });
+
+//     const transcode = async (webcamData) => {
+//       const name = 'record.webm';
+//       await ffmpeg.load();
+//       await ffmpeg.write(name, webcamData);
+//       await ffmpeg.transcode(name, 'output.mp4');
+//       const data = ffmpeg.read('output.mp4');
+
+//       const video = document.getElementById('output-video');
+//       video.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
+//       dl.href = video.src;
+//       dl.innerHTML = "download mp4"
+//     }
+
+//     fn().then(async ({ url, blob }) => {
+//       transcode(new Uint8Array(await (blob).arrayBuffer()));
+//     })
+
+//     function fn() {
+//       var recordedChunks = [];
+
+//       var time = 0;
+//       var canvas = document.getElementById("c");
+
+//       return new Promise(function (res, rej) {
+//         var stream = canvas.captureStream(60);
+
+//         mediaRecorder = new MediaRecorder(stream, {
+//           mimeType: "video/webm; codecs=vp9"
+//         });
+
+//         mediaRecorder.start(time);
+
+//         mediaRecorder.ondataavailable = function (e) {
+//           recordedChunks.push(event.data);
+//           // for demo, removed stop() call to capture more than one frame
+//         }
+
+//         mediaRecorder.onstop = function (event) {
+//           var blob = new Blob(recordedChunks, {
+//             "type": "video/webm"
+//           });
+//           var url = URL.createObjectURL(blob);
+//           res({ url, blob }); // resolve both blob and url in an object
+
+//           myVideo.src = url;
+//           // removed data url conversion for brevity
+//         }
+
+//         // for demo, draw random lines and then stop recording
+//         var i = 0,
+//           tid = setInterval(() => {
+//             if ($("#record").hasClass("recording") == false) {
+//               clearInterval(tid);
+//               console.log(i)
+//             }
+//             i++
+//           }, 1000)
+
+
+//       });
+//     }
+//   }
+
+//   function stopRecording() {
+//     mediaRecorder.stop();
+//     $("#dl").trigger('click')
+//   }
+
+//   if ($("#record").hasClass("recording") == false) {
+//     $("#record").addClass("recording")
+//     $("#controls").css("border-bottom", "red solid 1px")
+//     startRecording()
+
+//   } else {
+//     $("#record").removeClass("recording")
+//     $("#controls").css("border-bottom", "black solid 1px")   
+//     stopRecording()
+//   }
+// })
 
 // function record() {
 //   var canvas = document.querySelector("#c");
@@ -980,3 +1261,4 @@ $("#record").on("click", function () {
 //   mediaRecorder.start();
 //   mediaRecorder.stop();
 // }
+

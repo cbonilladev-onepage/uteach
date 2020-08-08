@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script src="libs/jquery.js"></script>
   <!-- <script src="libs/fabric-brush.min.js"></script>
@@ -49,12 +50,12 @@
       format: 'rgba'
     };
   </script>
-  <div id="loading">
+  <!-- <div id="loading">
     <img id="loading-image" src="uteachist.jpg" alt="Loading..." />
-  </div>
-  <div id="downloadRecording">
-    <video id="recording"></video>
-  </div>
+  </div> -->
+  <video id="myVideo" controls="controls"></video>
+  <video id="output-video" controls="controls"></video>
+  <a id="dl" href="" download="download.mp4"></a>
   <div class="controls" id="controls">
     <!-- <embed src="uteach3.svg" id="logo"> -->
     <div class="draw">
@@ -196,7 +197,7 @@
     </div>
     <div>
       <button class="fa fa-question fa-lg" id="question" onclick="instructions()" title="help"></button>
-      <button class="fas fa-circle fa-lg" id="record" title="record"></button>
+      <button class="fas fa-circle fa-lg" id="record" title="record (in progress)"></button>
     </div>
   </div>
 
@@ -256,9 +257,12 @@
       bx.style.top = y - (($("#box").width()) / 2) + "px";
     })
   </script>
-
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.8.3/dist/ffmpeg.min.js"></script>
+  
   <script src="libs/myScript.js"></script>
+  
   <script src="https://use.fontawesome.com/79b4fe23a3.js"></script>
+  
 </body>
 
 </html>

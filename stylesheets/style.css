@@ -388,7 +388,7 @@ label {
   color: red;
 }
 
-/* #recordings {
+#myVideo, #output-video {
   display: none;
-} */
+}
 
