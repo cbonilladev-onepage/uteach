@@ -1051,17 +1051,9 @@ function downloadVideo() {
   recording.click()
 }
 
-$("#dl").on("click", function () {
-  $("#dl").remove()
-  $("#output-video").remove()
-  $("#myVideo").remove()
-  $("body").append("<video id='myVideo' controls='controls'></video>")
-  $("body").append("<video id='output-video' controls='controls'></video>")
-  $("body").append("<a id='dl' href='' download='download.mp4'></a>")
-  
-})
 
-var element = document.querySelector('#dl');
+
+
 
 var observer = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
@@ -1071,6 +1063,8 @@ var observer = new MutationObserver(function (mutations) {
   });
 });
 
+var element = document.querySelector('#dl');
+
 observer.observe(element, {
   attributes: true //configure it to listen to attribute changes
 });
@@ -1078,18 +1072,18 @@ observer.observe(element, {
 const recordButton = document.querySelector("#record")
 recordButton.addEventListener('click', () => {
   function startRecording() {
-
+    id += 1
     const { createFFmpeg } = FFmpeg;
     const ffmpeg = createFFmpeg({
       log: true
     });
 
     const transcode = async (webcamData) => {
-      const name = 'record.webm';
+      const name = `record${id}.webm`;
       await ffmpeg.load();
       await ffmpeg.write(name, webcamData);
-      await ffmpeg.transcode(name, 'output.mp4');
-      const data = ffmpeg.read('output.mp4');
+      await ffmpeg.transcode(name, `output${id}.mp4`);
+      const data = ffmpeg.read(`output${id}.mp4`);
 
       const video = document.getElementById('output-video');
       video.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
@@ -1274,3 +1268,12 @@ recordButton.addEventListener('click', () => {
 //   mediaRecorder.stop();
 // }
 
+$("#dl").on("click", function () {
+  $("#dl").remove()
+  $("#output-video").remove()
+  $("#myVideo").remove()
+  $("body").append("<video id='myVideo' controls='controls'></video>")
+  $("body").append("<video id='output-video' controls='controls'></video>")
+  $("body").append("<a id='dl' href='' download='download.mp4'></a>")
+  
+})
