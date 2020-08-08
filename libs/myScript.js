@@ -1051,6 +1051,16 @@ function downloadVideo() {
   recording.click()
 }
 
+$("#dl").on("click", function () {
+  $("#dl").remove()
+  $("#output-video").remove()
+  $("#myVideo").remove()
+  $("body").append("<video id='myVideo' controls='controls'></video>")
+  $("body").append("<video id='output-video' controls='controls'></video>")
+  $("body").append("<a id='dl' href='' download='download.mp4'></a>")
+  
+})
+
 var element = document.querySelector('#dl');
 
 var observer = new MutationObserver(function (mutations) {
