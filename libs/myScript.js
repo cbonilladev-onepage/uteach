@@ -1044,6 +1044,8 @@ $("#shadowoff").on("click", function () {
 //     downloadVideo();
 //   }
 // })
+
+
 function downloadVideo() {
   var recording = document.querySelector("#dl")
   recording.click()
