@@ -373,7 +373,7 @@ function addTriangle() {
     left: 50,
     top: 50,
     fill: shapeColor,
-    width: 100,
+    width: 125,
     height: 100,
     centeredTotation: true
   });
