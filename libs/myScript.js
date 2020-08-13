@@ -928,6 +928,7 @@ function downloadVideo() {
 var link = document.getElementById("dl");
 var source = document.getElementById("myVideo");
 
+
 var observer = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
     if (mutation.type == "attributes") {
@@ -941,7 +942,10 @@ var observer = new MutationObserver(function (mutations) {
 var element = document.querySelector('#dl');
 
 observer.observe(element, {
-  attributes: true //configure it to listen to attribute changes
+  attributes: true,
+  childList:false,
+  subtree:true,
+  characterData:true //configure it to listen to attribute changes
 });
 
 function changeLink() {
@@ -1036,17 +1040,4 @@ recordButton.on('click', function () {
       $("#record").removeClass("recording")
       $("#controls").css("border-bottom", "black solid 1px")
   }
-})
-
-
-$("#dl").on("click", function () {
-  $("#dl").remove()
-  $("#output-video").remove()
-  $("#myVideo").remove()
-  $("body").prepend("<a id='dl' href='' download='download.mp4'></a>")
-  $("body").prepend("<video id='output-video' controls='controls'></video>")
-  $("body").prepend("<video id='myVideo' controls='controls'></video>")
-
-
-
 })
