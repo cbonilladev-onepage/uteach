@@ -31,6 +31,9 @@ button {
   z-index: 99;
 }
 
+
+
+
 #controls > div {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -395,3 +398,23 @@ label {
   display: none;
 }
 
+@media only screen and (max-width: 600px) {
+  #controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #outfitChange {
+    left: 20px;
+  }
+
+  #record {
+    right: 1.5em;
+  }
+
+  #question {
+    left: 2.5em;
+  }
+
+}
