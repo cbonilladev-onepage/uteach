@@ -1000,7 +1000,7 @@ recordButton.on('click', function () {
       var canvas = document.getElementById("c");
 
       return new Promise(function (res, rej) {
-        var stream = canvas.captureStream(30);
+        var stream = canvas.captureStream(60);
 
         mediaRecorder = new MediaRecorder(stream, {
           mimeType: "video/webm; codecs=vp9"
