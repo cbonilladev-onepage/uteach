@@ -63,7 +63,7 @@
         data-placement="bottom" title="drawing mode on/off"></button>
       <button class="fa fa-arrows-v fa-lg" id="b" type="button" onclick="heightAdjust()" data-toggle="tooltip"
         data-placement="bottom" title="set canvas height"></button>
-      <input type="text" id="height" name="url" placeholder="1080" maxlength="4" size="2"></input> px
+      <input type="text" id="height" name="url" placeholder="1080" maxlength="4" size="2">px</input>
 
 
     </div>
@@ -249,12 +249,18 @@
 
 
   <script>
-    var bx = document.getElementById("box");
-    document.addEventListener('mousemove', function (e) {
-      var x = e.clientX;
-      var y = e.clientY;
-      bx.style.left = x - (($("#box").width()) / 2) + "px";
-      bx.style.top = y - (($("#box").width()) / 2) + "px";
+    // var bx = document.getElementById("box");
+    // document.addEventListener('mousemove', function (e) {
+    //   var x = e.clientX;
+    //   var y = e.clientY;
+    //   bx.style.left = x - (($("#box").width()) / 2) + "px";
+    //   bx.style.top = y - (($("#box").width()) / 2) + "px";
+    // })
+    $(document).bind('mousemove', function(e) {
+      $("#box").css({
+        left:  e.pageX - (($("#box").width()) / 2) + "px",
+       top:   e.pageY - (($("#box").width()) / 2) + "px"
+      })
     })
   </script>
   <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.8.3/dist/ffmpeg.min.js"></script>

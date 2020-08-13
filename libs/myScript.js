@@ -57,28 +57,18 @@ function redo() {
 
 var drawing = document.getElementById("drawing")
 
-// $(document).on('click', '.draw', function() {
-//   canvas.isDrawingMode = !canvas.isDrawingMode
-//   if (canvas.isDrawingMode) {
-//     tools.style.display == ""
-//     console.log(tools.style.display)
-//   } else {
-//     tools.style.display = "none"
-//   }
+
+// document.onreadystatechange = function() { 
+//   if (document.readyState !== "complete") { 
+//       document.querySelector("body").style.visibility = "hidden"; 
+//       document.querySelector("#loader").style.visibility = "visible"; 
+//   } else { 
+//       document.querySelector("#loader").style.display = "none"; 
+//       document.querySelector("body").style.visibility = "visible"; 
+//   } 
+// }; 
 
 
-// })
-
-
-// drawing.onclick = function() {
-//   canvas.isDrawingMode = !canvas.isDrawingMode;
-//   if (canvas.isDrawingMode) {
-//     document.getElementById("tools").removeAttribute("class")
-//   }
-//   else {
-//     document.getElementById("tools").className += "tools";
-//   }
-// };
 $("#tools").draggable()
 $("#tools").css("position", "absolute")
 $('#drawing-line-width').attr("class", "slider is-fullwidth")
@@ -370,7 +360,7 @@ function addSquare() {
     top: 50,
     fill: shapeColor,
     width: 100,
-    height: 50,
+    height: 100,
     centeredTotation: true
   });
 
@@ -383,8 +373,8 @@ function addTriangle() {
     left: 50,
     top: 50,
     fill: shapeColor,
-    width: 75,
-    height: 75,
+    width: 100,
+    height: 100,
     centeredTotation: true
   });
 
@@ -852,7 +842,7 @@ function addWebcam() {
   'use strict';
 
   var video = document.getElementById(`vid${id - 1}`)
-  console.log(video)
+  // console.log(video)
   if (navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then(function (stream) {
@@ -865,16 +855,6 @@ function addWebcam() {
   var hide = $(".hide")
   hide.removeClass("hide")
 }
-
-// document.onreadystatechange = function() { 
-//   if (document.readyState !== "complete") { 
-//       document.querySelector("body").style.visibility = "hidden"; 
-//       document.querySelector("#loader").style.visibility = "visible"; 
-//   } else { 
-//       document.querySelector("#loader").style.display = "none"; 
-//       document.querySelector("body").style.visibility = "visible"; 
-//   } 
-// }; 
 
 
 const pickr = Pickr.create({
@@ -940,124 +920,19 @@ $("#shadowoff").on("click", function () {
 
 })
 
-// $(window).load(function () {
-//   $('#loading').hide();
-// });
-
-// $("#record").on("click", function () {
-
-//   if ($("#record").hasClass("recording") == false) {
-//     $("#record").addClass("recording")
-//     $("#controls").css("border-bottom", "red solid 1px")
-//     const { createFFmpeg } = FFmpeg;
-//     const ffmpeg = createFFmpeg({
-//       log: true
-//     });
-
-//     const transcode = async (webcamData) => {
-//       const name = 'record.webm';
-//       await ffmpeg.load();
-//       await ffmpeg.write(name, webcamData);
-//       await ffmpeg.transcode(name, 'output.mp4');
-//       const data = ffmpeg.read('output.mp4');
-
-//       const video = document.getElementById('output-video');
-//       video.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
-//       dl.href = video.src;
-//       dl.innerHTML = "download mp4"
-//     }
-
-//     fn().then(async ({ url, blob }) => {
-//       transcode(new Uint8Array(await (blob).arrayBuffer()));
-//     })
-
-//     function fn() {
-//       var recordedChunks = [];
-
-//       var time = 0;
-//       var canvas = document.getElementById("c");
-
-//       return new Promise(function (res, rej) {
-//         var stream = canvas.captureStream(60);
-
-//         mediaRecorder = new MediaRecorder(stream, {
-//           mimeType: "video/webm; codecs=vp9"
-//         });
-
-//         mediaRecorder.start(time);
-
-//         mediaRecorder.ondataavailable = function (e) {
-//           recordedChunks.push(event.data);
-//           // for demo, removed stop() call to capture more than one frame
-//         }
-
-//         mediaRecorder.onstop = function (event) {
-//           var blob = new Blob(recordedChunks, {
-//             "type": "video/webm"
-//           });
-//           var url = URL.createObjectURL(blob);
-//           res({ url, blob }); // resolve both blob and url in an object
-
-//           myVideo.src = url;
-//           // removed data url conversion for brevity
-//         }
-
-//         // for demo, draw random lines and then stop recording
-//         var i = 0,
-//           tid = setInterval(() => {
-//             if (i++ > 20) { // draw 20 lines
-//               clearInterval(tid);
-//               mediaRecorder.stop();
-//             }
-//             let canvas = document.querySelector("canvas");
-//             let cx = canvas.getContext("2d");
-//             cx.beginPath();
-//             cx.strokeStyle = 'green';
-//             cx.moveTo(Math.random() * 100, Math.random() * 100);
-//             cx.lineTo(Math.random() * 100, Math.random() * 100);
-//             cx.stroke();
-//           }, 200)
-
-//       });
-//     }
-
-//   } else {
-//     $("#record").removeClass("recording")
-//     $("#controls").css("border-bottom", "black solid 1px")   
-//     var canvas = document.getElementById("c");
-
-//     var stream = canvas.captureStream(60);
-//     mediaRecorder = new MediaRecorder(stream, {
-//       mimeType: "video/webm; codecs=vp9"
-//     });
-//     mediaRecorder.stop();
-//     $("#dl").click()
-//   }
-// })
-// $("#dl").change(function () {
-//   var videoLink = document.getElementById("dl")
-//   if (videoLink.href == /(blob:)\w+/) {
-//     function downloadVideo() {
-//       var recording = document.querySelector("#dl")
-//       recording.click()
-//     }
-//     downloadVideo();
-//   }
-// })
-
-
 function downloadVideo() {
   var recording = document.querySelector("#dl")
   recording.click()
 }
 
-
-
-
+var link = document.getElementById("dl");
+var source = document.getElementById("myVideo");
 
 var observer = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
     if (mutation.type == "attributes") {
+      console.log(link.href)
+      console.log(source.src)
       downloadVideo()
     }
   });
@@ -1069,23 +944,32 @@ observer.observe(element, {
   attributes: true //configure it to listen to attribute changes
 });
 
-const recordButton = document.querySelector("#record")
-recordButton.addEventListener('click', () => {
-  function startRecording() {
-    id += 1
-    const { createFFmpeg } = FFmpeg;
-    const ffmpeg = createFFmpeg({
-      log: true
-    });
+function changeLink() {
+  if (link.href !== source.src) {
+    link.href = source.src
+  }
+}
 
-    const transcode = async (webcamData) => {
-      const name = `record${id}.webm`;
-      await ffmpeg.load();
+
+// const recordButton = document.querySelector("#record")
+const recordButton = $("#record")
+const { createFFmpeg } = FFmpeg;
+const ffmpeg = createFFmpeg({
+  log: true
+});
+recordButton.on('click', function () {
+
+  
+  function startRecording() {
+    
+    var transcode = async (webcamData) => {
+      var name = `record${id}.webm`;
+      await ffmpeg.load(this);
       await ffmpeg.write(name, webcamData);
       await ffmpeg.transcode(name, `output${id}.mp4`);
-      const data = ffmpeg.read(`output${id}.mp4`);
+      var data = ffmpeg.read(`output${id}.mp4`);
 
-      const video = document.getElementById('output-video');
+      var video = document.getElementById('output-video');
       video.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
       dl.href = video.src;
     }
@@ -1101,7 +985,7 @@ recordButton.addEventListener('click', () => {
       var canvas = document.getElementById("c");
 
       return new Promise(function (res, rej) {
-        var stream = canvas.captureStream(60);
+        var stream = canvas.captureStream(30);
 
         mediaRecorder = new MediaRecorder(stream, {
           mimeType: "video/webm; codecs=vp9"
@@ -1138,6 +1022,8 @@ recordButton.addEventListener('click', () => {
 
       });
     }
+    id += 1
+    
   }
 
   if ($("#record").hasClass("recording") == false) {
@@ -1147,133 +1033,20 @@ recordButton.addEventListener('click', () => {
     startRecording()
 
   } else {
-    function stopIt() {
       $("#record").removeClass("recording")
       $("#controls").css("border-bottom", "black solid 1px")
-
-    }
-    stopIt();
   }
 })
 
-// $("#record").on("click", function () {
-//   function startRecording() {
-//     const { createFFmpeg } = FFmpeg;
-//     const ffmpeg = createFFmpeg({
-//       log: true
-//     });
-
-//     const transcode = async (webcamData) => {
-//       const name = 'record.webm';
-//       await ffmpeg.load();
-//       await ffmpeg.write(name, webcamData);
-//       await ffmpeg.transcode(name, 'output.mp4');
-//       const data = ffmpeg.read('output.mp4');
-
-//       const video = document.getElementById('output-video');
-//       video.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
-//       dl.href = video.src;
-//       dl.innerHTML = "download mp4"
-//     }
-
-//     fn().then(async ({ url, blob }) => {
-//       transcode(new Uint8Array(await (blob).arrayBuffer()));
-//     })
-
-//     function fn() {
-//       var recordedChunks = [];
-
-//       var time = 0;
-//       var canvas = document.getElementById("c");
-
-//       return new Promise(function (res, rej) {
-//         var stream = canvas.captureStream(60);
-
-//         mediaRecorder = new MediaRecorder(stream, {
-//           mimeType: "video/webm; codecs=vp9"
-//         });
-
-//         mediaRecorder.start(time);
-
-//         mediaRecorder.ondataavailable = function (e) {
-//           recordedChunks.push(event.data);
-//           // for demo, removed stop() call to capture more than one frame
-//         }
-
-//         mediaRecorder.onstop = function (event) {
-//           var blob = new Blob(recordedChunks, {
-//             "type": "video/webm"
-//           });
-//           var url = URL.createObjectURL(blob);
-//           res({ url, blob }); // resolve both blob and url in an object
-
-//           myVideo.src = url;
-//           // removed data url conversion for brevity
-//         }
-
-//         // for demo, draw random lines and then stop recording
-//         var i = 0,
-//           tid = setInterval(() => {
-//             if ($("#record").hasClass("recording") == false) {
-//               clearInterval(tid);
-//               console.log(i)
-//             }
-//             i++
-//           }, 1000)
-
-
-//       });
-//     }
-//   }
-
-//   function stopRecording() {
-//     mediaRecorder.stop();
-//     $("#dl").trigger('click')
-//   }
-
-//   if ($("#record").hasClass("recording") == false) {
-//     $("#record").addClass("recording")
-//     $("#controls").css("border-bottom", "red solid 1px")
-//     startRecording()
-
-//   } else {
-//     $("#record").removeClass("recording")
-//     $("#controls").css("border-bottom", "black solid 1px")   
-//     stopRecording()
-//   }
-// })
-
-// function record() {
-//   var canvas = document.querySelector("#c");
-
-//   var video = document.querySelector("#recording");
-//   var videoStream = canvas.captureStream(30);
-//   var mediaRecorder = new MediaRecorder(videoStream);
-
-//   var chunks = [];
-//   mediaRecorder.ondataavailable = function (e) {
-//     chunks.push(e.data);
-//   };
-
-//   mediaRecorder.onstop = function (e) {
-//     var blob = new Blob(chunks, { 'type': 'video/mp4' });
-//     chunks = [];
-//     var videoURL = URL.createObjectURL(blob);
-//     video.src = videoURL;
-//   };
-//   mediaRecorder.ondataavailable = function (e) {
-//     chunks.push(e.data);
-//   };
-//   mediaRecorder.start();
-//   mediaRecorder.stop();
-// }
 
 $("#dl").on("click", function () {
   $("#dl").remove()
   $("#output-video").remove()
   $("#myVideo").remove()
-  $("body").append("<video id='myVideo' controls='controls'></video>")
-  $("body").append("<video id='output-video' controls='controls'></video>")
-  $("body").append("<a id='dl' href='' download='download.mp4'></a>")
-  
+  $("body").prepend("<a id='dl' href='' download='download.mp4'></a>")
+  $("body").prepend("<video id='output-video' controls='controls'></video>")
+  $("body").prepend("<video id='myVideo' controls='controls'></video>")
+
+
+
 })
