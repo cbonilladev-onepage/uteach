@@ -394,6 +394,17 @@ function heightAdjust() {
     canvas.setHeight(height.placeholder)
   }
 }
+function widthAdjust() {
+  var width = document.getElementById("width")
+  if (width.value !== "") {
+    canvas.setWidth(width.value)
+    width.value = ""
+    // console.log("Oh, hello Laverne.")
+  } else {
+    // console.log("Hello Laverne.")
+    canvas.setWidth(width.placeholder)
+  }
+}
 
 
 
@@ -1033,11 +1044,11 @@ recordButton.on('click', function () {
   if ($("#record").hasClass("recording") == false) {
 
     $("#record").addClass("recording")
-    $("#controls").css("border-bottom", "red solid 1px")
+    $("#c").css("border", "red solid 1px")
     startRecording()
 
   } else {
       $("#record").removeClass("recording")
-      $("#controls").css("border-bottom", "black solid 1px")
+      $("#c").css("border", "black solid 1px")
   }
 })

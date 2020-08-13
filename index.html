@@ -61,6 +61,9 @@
     <div class="draw">
       <button class="fa fa-paint-brush fa-lg" id="draw-toggle" type="button" onclick="addDraw()" data-toggle="tooltip"
         data-placement="bottom" title="drawing mode on/off"></button>
+      <button class="fas fa-arrows-alt-h fa-lg" id="b" type="button" onclick="widthAdjust()" data-toggle="tooltip"
+        data-placement="bottom" title="set canvas width"></button>
+      <input type="text" id="width" name="url" placeholder="1920" maxlength="4" size="2">px</input>
       <button class="fa fa-arrows-v fa-lg" id="b" type="button" onclick="heightAdjust()" data-toggle="tooltip"
         data-placement="bottom" title="set canvas height"></button>
       <input type="text" id="height" name="url" placeholder="1080" maxlength="4" size="2">px</input>
@@ -256,19 +259,20 @@
     //   bx.style.left = x - (($("#box").width()) / 2) + "px";
     //   bx.style.top = y - (($("#box").width()) / 2) + "px";
     // })
-    $(document).bind('mousemove', function(e) {
+    $(document).bind('mousemove', function (e) {
       $("#box").css({
-        left:  e.pageX - (($("#box").width()) / 2) + "px",
-       top:   e.pageY - (($("#box").width()) / 2) + "px"
+        left: e.pageX - (($("#box").width()) / 2) + "px",
+        top: e.pageY - (($("#box").width()) / 2) + "px"
       })
     })
   </script>
-  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.8.3/dist/ffmpeg.min.js"></script>
-  
+  <!-- <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.8.3/dist/ffmpeg.min.js"></script> -->
+  <script src="libs/ffmpeg.min.js"></script>
+
   <script src="libs/myScript.js"></script>
-  
+
   <script src="https://use.fontawesome.com/79b4fe23a3.js"></script>
-  
+
 </body>
 
 </html>
