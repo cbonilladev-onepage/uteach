@@ -29,6 +29,7 @@ canvas.on('object:added', function () {
 
 var isRedoing = false;
 var h = [];
+
 function undo() {
   if (canvas._objects.length > 0) {
     h.push(canvas._objects.pop());
@@ -36,14 +37,13 @@ function undo() {
   }
 }
 function redo() {
-
   if (h.length > 0) {
     isRedoing = true;
     canvas.add(h.pop());
   }
 }
 
-
+// Possible Zoom Function
 // canvas.on('mouse:wheel', function(opt) {
 //   var delta = opt.e.deltaY;
 //   var zoom = canvas.getZoom();
@@ -56,18 +56,6 @@ function redo() {
 // });
 
 var drawing = document.getElementById("drawing")
-
-
-// document.onreadystatechange = function() { 
-//   if (document.readyState !== "complete") { 
-//       document.querySelector("body").style.visibility = "hidden"; 
-//       document.querySelector("#loader").style.visibility = "visible"; 
-//   } else { 
-//       document.querySelector("#loader").style.display = "none"; 
-//       document.querySelector("body").style.visibility = "visible"; 
-//   } 
-// }; 
-
 
 $("#tools").draggable()
 $("#tools").css("position", "absolute")
@@ -98,9 +86,6 @@ function addDraw() {
   }
   else {
     document.getElementById("tools").className += "tools";
-
-    // $('#drawing-line-width').attr("class", "slider is-fullwidth")
-
   }
 
   var $ = function (id) { return document.getElementById(id) };
@@ -338,9 +323,9 @@ function addPaper() {
   });
 
   rect.setShadow(addShadow);
-
   canvas.add(rect);
 }
+
 function addCircle() {
   var circle = new fabric.Circle({
     radius: 50,
@@ -388,9 +373,7 @@ function heightAdjust() {
   if (height.value !== "") {
     canvas.setHeight(height.value)
     height.value = ""
-    // console.log("Oh, hello Laverne.")
   } else {
-    // console.log("Hello Laverne.")
     canvas.setHeight(height.placeholder)
   }
 }
@@ -399,9 +382,7 @@ function widthAdjust() {
   if (width.value !== "") {
     canvas.setWidth(width.value)
     width.value = ""
-    // console.log("Oh, hello Laverne.")
   } else {
-    // console.log("Hello Laverne.")
     canvas.setWidth(width.placeholder)
   }
 }
@@ -492,12 +473,6 @@ function addVid() {
 
     video.controls = true;
     video.autoplay = true;
-
-    // vidsrc = document.getElementById("vidinput").value
-    // console.log(video)
-    // source.src = "video.mp4";
-
-
   }
 
   div()
@@ -592,13 +567,10 @@ function saveAs(uri, filename) {
     link.href = uri;
     link.download = filename;
 
-    //Firefox requires the link to be in the body
     document.body.appendChild(link);
 
-    //simulate click
     link.click();
 
-    //remove the link when done
     document.body.removeChild(link);
   } else {
     window.open(uri);
@@ -616,22 +588,11 @@ src = document.getElementById("video1")
 
 function youtubeurl(url) {
 
-  //   function div () {
-  //     var capture = document.getElementById("capture")
-  //     var divide = document.createElement("div")
-  //     divide.setAttribute("id", "resizable")
-  //     capture.appendChild(divide)
-  // }
-
-  // div()
-
   var div = document.getElementById("resizable" + (id - 1))
-  // console.log(div.childNodes)
   div.removeChild(div.childNodes[1])
   div.removeChild(div.childNodes[1])
 
 
-  // console.log(div.childNodes)
   function video() {
 
 
@@ -663,11 +624,8 @@ function clicker() {
 
   var emojis = document.querySelector(".emoji-wysiwyg-editor").childNodes.length
   var emojicon = document.getElementById("emojicon")
-  // console.log(emojicon)
-  // emojicon.onclick = function () { console.log("Hello.") };
   if (emojis > 0) {
     var clicked = document.querySelector(".emoji-items").getElementsByTagName("a")
-    // console.log(clicked)
 
     var emojiimg = document.querySelector(".emoji-wysiwyg-editor").innerText
 
@@ -691,17 +649,9 @@ function clicker() {
 
 }
 
-
-
-// var menu = document.querySelector(".emoji-menu").style.zIndex
-
 $(window).on("load", function () {
   var emojiPicker = document.querySelector(".emoji-picker-icon")
-  // $('.emoji-picker-icon').click(function(event) {
-  //   event.preventDefault();
-  // })
   emojiPicker.setAttribute("onclick", "clicker()")
-
 })
 
 function addMoji() {
@@ -715,66 +665,61 @@ function addMoji() {
   $('.emoji-picker-container').draggable({
     cancel: '.emoji-menu'
   })
-
-
-
 }
 
-document.onkeydown = function (e) {
-  switch (e.which) {
+//Temporary key-binding turned off to debug UI issues. 
+// document.onkeydown = function (e) {
+//   switch (e.which) {
 
-    case 8: // left
-      if ($(".emoji-menu").is(":hidden") == true) {
-        deleteObj();
-        break;
-      } else {
-        break;
-      }
+//     case 8: // left
+//       if ($(".emoji-menu").is(":hidden") == true) {
+//         deleteObj();
+//         break;
+//       } else {
+//         break;
+//       }
 
-    case 67: // up
-      copyObj();
-      break;
+//     case 67: // up
+//       copyObj();
+//       break;
 
-    case 86: // right
-      pasteObj();
-      break;
+//     case 86: // right
+//       pasteObj();
+//       break;
 
-    case 38: // down
-      stackUp()
-      break;
+//     case 38: // down
+//       stackUp()
+//       break;
 
-    case 40: // down
-      stackDown()
-      break;
+//     case 40: // down
+//       stackDown()
+//       break;
 
-    case 90: // down
-      // if (canvas.isDrawingMode == true) {
-      undo()
-      // }
-      break;
+//     case 90: // down
+//       // if (canvas.isDrawingMode == true) {
+//       undo()
+//       // }
+//       break;
 
-    case 89: // down
-      // if (canvas.isDrawingMode == true) {
-      redo()
-      // }
-      break;
+//     case 89: // down
+//       // if (canvas.isDrawingMode == true) {
+//       redo()
+//       // }
+//       break;
 
-    case 70: // down
-      toFront()
-      break;
+//     case 70: // up
+//       toFront()
+//       break;
 
-    case 66: // down
-      toBack()
-      break;
+//     case 66: // down
+//       toBack()
+//       break;
 
-    default: return; // exit this handler for other keys
-  }
-  e.preventDefault(); // prevent the default action (scroll / move caret)
-};
+//     default: return; // exit this handler for other keys
+//   }
+//   e.preventDefault(); // prevent the default action (scroll / move caret)
+// };
 function downloadSVGCanvas() {
-  // console.log("hello")
-  // alert(canvas.toSVG());
-
   var svgData = canvas.toSVG()
 
   var svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
@@ -794,13 +739,9 @@ function downloadSVGCanvas() {
 var rect = new fabric.Rect();
 $(document).on("click", '#light', function (event) {
   function light() {
-    // $("#c").css("background-color", "white")
-    // var rect = new fabric.Rect();
     rect.set({ width: canvas.width * 1.5, height: canvas.height * 1.5, fill: 'white', stroke: null, left: -2, top: -2, active: true, selectable: false, evented: false });
     canvas.setActiveObject(rect);
     canvas.add(rect);
-    // canvas.sendToBack(rect)
-    // canvas.bringForward(rect)
     $("#light").hide()
     $("#dark").show()
   }
@@ -808,22 +749,15 @@ $(document).on("click", '#light', function (event) {
 })
 $(document).on("click", '#dark', function (event) {
   function dark() {
-    // $("#c").css("background-color", "black")
     var rect = new fabric.Rect();
     rect.set({ width: canvas.width * 1.5, height: canvas.height * 1.5, fill: 'black', stroke: null, left: -2, top: -2, active: true, selectable: false, evented: false });
     canvas.setActiveObject(rect);
     canvas.add(rect);
-    // canvas.sendToBack(rect)
-    // canvas.bringForward(rect)
     $("#dark").hide()
     $("#light").show()
   }
   dark()
 })
-
-
-// $("#light").onclick = function () { light() };
-// $("#dark").onclick = function () { dark(), console.log("hello") };
 
 function instructions() {
   fabric.Image.fromURL('instructions.jpg', function (oImg) {
@@ -853,7 +787,6 @@ function addWebcam() {
   'use strict';
 
   var video = document.getElementById(`vid${id - 1}`)
-  // console.log(video)
   if (navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then(function (stream) {
@@ -870,7 +803,7 @@ function addWebcam() {
 
 const pickr = Pickr.create({
   el: '.color-picker',
-  theme: 'monolith', // or 'monolith', or 'nano'
+  theme: 'monolith',
   default: '#000000',
   swatches: [
     'rgba(244, 67, 54, 1)',
@@ -926,9 +859,6 @@ $("#shadowoff").on("click", function () {
   $("#shadowoff").hide();
   $("#shadowon").show();
   addShadow = "5px 5px 15px rgba(0,0,0,0.5)"
-
-
-
 })
 
 function downloadVideo() {
@@ -965,8 +895,6 @@ function changeLink() {
   }
 }
 
-
-// const recordButton = document.querySelector("#record")
 const recordButton = $("#record")
 const { createFFmpeg } = FFmpeg;
 const ffmpeg = createFFmpeg({
@@ -1038,7 +966,6 @@ recordButton.on('click', function () {
       });
     }
     id += 1
-    
   }
 
   if ($("#record").hasClass("recording") == false) {

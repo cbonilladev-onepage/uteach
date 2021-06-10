@@ -5,13 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script src="libs/jquery.js"></script>
-  <!-- <script src="libs/fabric-brush.min.js"></script>
-  <script src="libs/fabric.min.js"></script> -->
   <script src="libs/html2canvas.js"></script>
-  <!-- <script src="libs/dat.gui.js"></script> -->
-
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
@@ -21,23 +16,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
-  <!-- <link rel="stylesheet" href="stylesheets/dat.gui.css">
-  <link rel="stylesheet" href="stylesheets/github-light.css"> -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css" />
-  <!-- 'monolith' theme -->
-
-  <!-- <link type="text/css" href="stylesheets/emoji.scss" rel="stylesheet"> -->
-  <!-- <link type="text/css" href="stylesheets/emoji.css.map" rel="stylesheet"> -->
   <link type="text/css" href="stylesheets/emoji.css" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="stylesheets/style.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css"> -->
-
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css" />
-  <!-- 'nano' theme -->
 
 
 </head>
@@ -57,7 +42,6 @@
   <video id="output-video" controls="controls"></video>
   <a id="dl" href="" download="uteachRecording.mp4"></a>
   <div class="controls" id="controls">
-    <!-- <embed src="uteach3.svg" id="logo"> -->
     <div class="draw">
       <button class="fa fa-paint-brush fa-lg" id="draw-toggle" type="button" onclick="addDraw()" data-toggle="tooltip"
         data-placement="bottom" title="drawing mode on/off"></button>
@@ -192,11 +176,8 @@
 
     </div>
     <div id="outfitChange" class="outfitChange">
-
-
       <button class="fa fa-heart fa-lg" id="dark" title="black background"></button>
       <button class="fa fa-heart-o fa-lg" aria-hidden="true" id="light" title="white background"></button>
-
     </div>
     <div id="misc">
       <button class="fa fa-question fa-lg" id="question" onclick="instructions()" title="help"></button>
@@ -206,59 +187,34 @@
 
   <div id="capture">
     <canvas id="c">
-
     </canvas>
-
   </div>
-
-
-
 
   <div id="box"></div>
 
-
   <script src="libs/dat.gui.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
-
-  <!-- <script src="libs/config.js"></script>
-  <script src="libs/util.js"></script>
-  <script src="libs/jquery.emojiarea.js"></script> -->
   <script src="libs/emoji-picker.js"></script>
   <script>
     $("#drawing-line-width").on("input", function (e) {
-      var v = $(this).val();            // brush size value, example usage:
-      //ctx.lineWidth = v;              // context line-width
-      // $("#box").html($(this).val());    // textual repr.
-      $("#box").width(v).height(v);     // brush size rep.
+      var v = $(this).val();              
+      $("#box").width(v).height(v);   
     });
   </script>
   <script>
     $(function () {
-      // Initializes and creates emoji set from sprite sheet
       window.emojiPicker = new EmojiPicker.EmojiPicker({
         emojiable_selector: '[data-emojiable=true]',
         assetsPath: 'img//',
         popupButtonClasses: 'fa fa-smile-o fa-lg'
 
       });
-      // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-      // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-      // It can be called as many times as necessary; previously converted input fields will not be converted again
       window.emojiPicker.discover();
     });
   </script>
   <script src="libs/fabric.min.js"></script>
   <script src="libs/fabric-brush.min.js"></script>
-
-
   <script>
-    // var bx = document.getElementById("box");
-    // document.addEventListener('mousemove', function (e) {
-    //   var x = e.clientX;
-    //   var y = e.clientY;
-    //   bx.style.left = x - (($("#box").width()) / 2) + "px";
-    //   bx.style.top = y - (($("#box").width()) / 2) + "px";
-    // })
     $(document).bind('mousemove', function (e) {
       $("#box").css({
         left: e.pageX - (($("#box").width()) / 2) + "px",
@@ -266,11 +222,8 @@
       })
     })
   </script>
-  <!-- <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.8.3/dist/ffmpeg.min.js"></script> -->
   <script src="libs/ffmpeg.min.js"></script>
-
   <script src="libs/myScript.js"></script>
-
   <script src="https://use.fontawesome.com/79b4fe23a3.js"></script>
 
 </body>
