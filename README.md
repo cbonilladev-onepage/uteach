@@ -18,36 +18,36 @@ While video chat functionality may be integrated, that'll be put on hold to gras
 
 # How To Use (Tools from Left to Right)
 
-1. Brush: Click Brush to toggle and use Brush panel. A preview of your brush width is available on your cursor.
-2. Horizontal Size: Dictate horizontal pixels, default 1920. 
-3. Vertical Size: Dictate width pixels, default 1080.
-
-4. Image: Insert local image. 
-5. Video: Insert local video. 
-6. Webcam: Video > Webcam - Converts an empty video elements into a Webcam element. 
-7. Youtube URL: Insert Youtube URL to "tubify" an empty video element. 
-8. Tubify: Converts an empty video element into a Youtube video element. 
-
-9. Color Swatch: Dictates the color and opacity of your printed shapes. 
-
-10. Circle: Prints a circle.
-11. Square: Prints a square.
-12. Triangle: Prints a triangle.
-13. Paper: Prints a paper. 
-14. Poster: Prints a poster.
-15. Text: Prints an editable text element. 
-16. Emoji: Toggles an emoji keyboard. To print, add your emojis and click the Happy Face again. 
-
-17. Up: Moves an object up on the z-axis.
-18. Down: Moves an object down on the z-axis.
-
-19. Copy: Copies selected elements. 
-20. Paste: Paste selected elements. 
-21. Delete: Deletes selected element. 
-22. Delete All: Deletes all elements. 
-23. Save Raster: Saves board as PNG image. 
-24. Save Vector: Saves board as vector. 
-
-25. Record: Records drawing. (Very slow, third-party suggested)
-26. Black Background: Provides a black background. 
-28. Info: Simple info page, now defunct because keyboard bindings are temporarily disables. 
+- Brush: Click Brush to toggle and use Brush panel. A preview of your brush width is available on your cursor.
+- Horizontal Size: Dictate horizontal pixels, default 1920. 
+- Vertical Size: Dictate width pixels, default 1080.
+---
+- Image: Insert local image. 
+- Video: Insert local video. 
+	6. **Webcam: Video > Webcam** - Converts an empty video elements into a Webcam element. 
+- Youtube URL: Insert Youtube URL to "tubify" an empty video element. 
+    8. **Tubify: Video > Tubify** - Converts an empty video element into a Youtube video element. 
+---
+- Color Swatch: Dictates the color and opacity of your printed shapes. 
+---
+- Circle: Prints a circle.
+- Square: Prints a square.
+- Triangle: Prints a triangle.
+- Paper: Prints a paper. 
+- Poster: Prints a poster.
+- Text: Prints an editable text element. 
+- Emoji: Toggles an emoji keyboard. To print, add your emojis and click the Happy Face again. 
+---
+- Up: Moves an object up on the z-axis.
+- Down: Moves an object down on the z-axis.
+---
+- Copy: Copies selected elements. 
+- Paste: Paste selected elements. 
+- Delete: Deletes selected element. 
+- Delete All: Deletes all elements. 
+- Save Raster: Saves board as PNG image. 
+- Save Vector: Saves board as vector. 
+---
+- Record: Records drawing. (Very slow, third-party suggested)
+- Black Background: Provides a black background. 
+- Info: Simple info page, now defunct because keyboard bindings are temporarily disables. 
