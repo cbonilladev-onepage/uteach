@@ -24,9 +24,9 @@ While video chat functionality may be integrated, that'll be put on hold to gras
 ---
 - Image: Insert local image. 
 - Video: Insert local video. 
-	6. **Webcam: Video > Webcam** - Converts an empty video elements into a Webcam element. 
+	- **Webcam: Video > Webcam** - Converts an empty video elements into a Webcam element. 
 - Youtube URL: Insert Youtube URL to "tubify" an empty video element. 
-    8. **Tubify: Video > Tubify** - Converts an empty video element into a Youtube video element. 
+    - **Tubify: Video > Tubify** - Converts an empty video element into a Youtube video element. 
 ---
 - Color Swatch: Dictates the color and opacity of your printed shapes. 
 ---
